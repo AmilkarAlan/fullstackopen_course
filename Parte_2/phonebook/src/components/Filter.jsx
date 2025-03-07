@@ -16,7 +16,7 @@ const Filter = ({persons,setFilterList}) => {
 
     <form>
       <div>
-        filter shown with <input type='text' name='filter' value={ filter } onChange={ handleFilter } />
+        filter shown with <input type='text' name='filter' value={ filter } onChange={ handleFilter } placeholder='Person name'/>
       </div>
     </form>
 

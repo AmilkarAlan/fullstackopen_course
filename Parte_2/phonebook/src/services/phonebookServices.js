@@ -16,7 +16,6 @@ const getAll = () => {
 const create = (newPerson) => {
     return axios.post(baseUrl, newPerson)
         .then(response => {
-            alert("!New number added!");
             console.log(response);
             return response.data;
         })
@@ -29,7 +28,6 @@ const create = (newPerson) => {
 const deleteById = (id) => {
     return axios.delete(`http://localhost:3001/persons/${id}`)
         .then(response => {
-            alert("!Number has been deleted!");
             console.log(response);
             return response.data;
         })

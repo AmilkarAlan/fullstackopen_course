@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react'
 import phonebookServices from "../services/phonebookServices"
-const Form = ({ setPersons, persons }) => {
+const Form = ({ setPersons, persons, setMessage }) => {
   const [ newPerson, setNewPerson ] = useState({ name: '', number: '' });
   const handleChange = (e) => {
     const name = e.target.name;
@@ -10,6 +10,9 @@ const Form = ({ setPersons, persons }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    const verifyExists = () => {
+      
+    }
     const formatNumber = (num) => {
       const countryCode = num.slice(0, 2);
       const cityCode = num.slice(2, 4);
@@ -27,6 +30,7 @@ const Form = ({ setPersons, persons }) => {
       .create(newPersonToAdd)
       .then(response => {
         setNewPerson({ name: '', number: '' });
+        setMessage("New number added")
         return phonebookServices.getAll();
       })
       .then(updateList => setPersons(updateList))
@@ -36,10 +40,10 @@ const Form = ({ setPersons, persons }) => {
   return (
     <form onSubmit={ handleSubmit }>
       <div>
-        name: <input type="text" value={ newPerson.name } name="name" onChange={ handleChange } required />
+        <label htmlFor="name">name: </label><input type="text" value={ newPerson.name } name="name" onChange={ handleChange } required />
       </div>
       <div>
-        number: <input type='text' value={ newPerson.number } maxLength={ 11 } name="number" onChange={ handleChange } required />
+        <label htmlFor="number">number: </label> <input type='text' value={ newPerson.number } maxLength={ 11 } name="number" onChange={ handleChange } required />
       </div>
       <div>
         <button type="submit">add</button>

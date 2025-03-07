@@ -6,6 +6,9 @@ const App = () => {
 
   const [ persons, setPersons ] = useState([]);
   const [ filterList, setFilterList ] = useState([]);
+  const [ message, setMessage ] = useState("");
+  const [ error, setError ] = useState("");
+
   useEffect(() => {
     phonebookServices
       .getAll()
@@ -15,7 +18,11 @@ const App = () => {
     persons={ persons }
     setFilterList={ setFilterList }
     filterList={ filterList }
-    setPersons={ setPersons } />
+    setPersons={ setPersons }
+    message={ message }
+    setMessage={ setMessage } 
+    error={error}
+    setError={setError}/>
 }
 
 export default App;
