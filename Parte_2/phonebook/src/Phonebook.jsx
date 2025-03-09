@@ -31,7 +31,8 @@ const Phonebook = ({ persons, setFilterList, filterList, setPersons, message, se
                     filterList={ filterList }
                     persons={ persons }
                     setPersons={ setPersons }
-                    setMessage={ setMessage } />
+                    setMessage={ setMessage }
+                    setError={setError} />
             </div>
             <div className={ style.messageContainer }>
                 <Message message={ message } setMessage={ setMessage } error={ error } setError={ setError } />

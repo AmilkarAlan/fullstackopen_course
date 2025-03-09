@@ -1,7 +1,7 @@
 import phonebookServices from "../services/phonebookServices";
 
 
-const Content = ({ filterList, persons, setPersons, setMessage }) => {
+const Content = ({ filterList, persons, setPersons, setMessage, setError}) => {
     const list = filterList.length === 0 ? persons : filterList;
     const handleDelete = (id) => {
         const confirm = window.confirm(`Are you sure you want to delete the person with id ${id}?`)
@@ -13,6 +13,7 @@ const Content = ({ filterList, persons, setPersons, setMessage }) => {
                     setPersons(updateList)
                     return setMessage("Number has been deleted")
                 }))
+                .catch(err=> setError(err.error))
     }
     return (
         <table>

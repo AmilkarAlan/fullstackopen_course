@@ -25,10 +25,7 @@ const create = (newPerson) => {
 }
 const deleteById = (id) => {
     return axios.delete(`${baseUrl}/${id}`)
-        .then(response => {
-            console.log(response);
-            return response.data;
-        })
+        .then(response => response.data)
         .catch(err => {
             console.log(err);
             throw err.response.data;

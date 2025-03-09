@@ -90,7 +90,7 @@ api.post("/persons", dataComprobation, (req, res) => {
             return res.status(500).json({ error: "Error reading the file" });
         }
         let persons = JSON.parse(data);
-        const id = persons.length ? persons[ persons.length - 1 ].id + 1 : 1;
+        const id = Number(persons.length ? persons[ persons.length - 1 ].id + 1 : 1);
         const person = { id, ...personData };
         persons.push(person);
         fs.writeFile(path.join(__dirname, "../db.json"), JSON.stringify(persons, null, 2), (err) => {
