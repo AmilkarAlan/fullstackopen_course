@@ -9,16 +9,14 @@ const Message = ({ message, setMessage, error, setError }) => {
             }, 2000);
             return
         }
-        if (error) {
-            setTimeout(() => {
-                setError("")
-            }, 2000);
-            return
-        }
+        setTimeout(() => {
+            setError("")
+        }, 2000);
+        return
     }, [ message, error ]);
     return (
         <div className={ `${style.messageWrapped} ${message ? style.complete : ""} ${error ? style.error : ""}` }>
-            <p>{ message || error } </p>
+            <p>{ message }</p>
         </div>
     )
 }

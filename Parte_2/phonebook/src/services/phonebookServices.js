@@ -8,9 +8,8 @@ const getAll = () => {
             return response.data;
         })
         .catch(err => {
-            alert("Something wrong");
             console.log(err);
-            throw err;
+            throw err.response.data;
         });
 }
 const create = (newPerson) => {
@@ -31,9 +30,8 @@ const deleteById = (id) => {
             return response.data;
         })
         .catch(err => {
-            alert("Something wrong");
             console.log(err);
-            throw err;
+            throw err.response.data;
         });
 }
 export default {
