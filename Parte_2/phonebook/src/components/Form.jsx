@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react'
 import phonebookServices from "../services/phonebookServices"
-const Form = ({ setPersons, persons, setMessage }) => {
+const Form = ({ setPersons, persons, setMessage,setError }) => {
   const [ newPerson, setNewPerson ] = useState({ name: '', number: '' });
   const handleChange = (e) => {
     const name = e.target.name;
@@ -10,9 +10,7 @@ const Form = ({ setPersons, persons, setMessage }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const verifyExists = () => {
-      
-    }
+
     const formatNumber = (num) => {
       const countryCode = num.slice(0, 2);
       const cityCode = num.slice(2, 4);
@@ -34,7 +32,7 @@ const Form = ({ setPersons, persons, setMessage }) => {
         return phonebookServices.getAll();
       })
       .then(updateList => setPersons(updateList))
-    // setPersons(prev => [ ...prev, { ...newPerson, number: newNumber, id: persons.length + 1 } ]);
+      .catch(err=> setError(err.data))
   };
 
   return (

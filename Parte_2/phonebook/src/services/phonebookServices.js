@@ -1,5 +1,5 @@
 import axios from "axios"
-const baseUrl = "http://localhost:3001/persons"
+const baseUrl = "http://localhost:3001/api/persons"
 
 const getAll = () => {
     return axios.get(baseUrl)
@@ -8,9 +8,8 @@ const getAll = () => {
             return response.data;
         })
         .catch(err => {
-            alert("Something wrong");
             console.log(err);
-            throw err;
+            throw err.response.data;
         });
 }
 const create = (newPerson) => {
@@ -20,21 +19,19 @@ const create = (newPerson) => {
             return response.data;
         })
         .catch(err => {
-            alert("Something wrong");
             console.log(err);
-            throw err;
+            throw err.response.data;
         });
 }
 const deleteById = (id) => {
-    return axios.delete(`http://localhost:3001/persons/${id}`)
+    return axios.delete(`${baseUrl}/${id}`)
         .then(response => {
             console.log(response);
             return response.data;
         })
         .catch(err => {
-            alert("Something wrong");
             console.log(err);
-            throw err;
+            throw err.response.data;
         });
 }
 export default {
