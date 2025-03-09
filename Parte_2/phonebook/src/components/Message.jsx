@@ -6,17 +6,17 @@ const Message = ({ message, setMessage, error, setError }) => {
         if (message) {
             setTimeout(() => {
                 setMessage("")
-            }, 1500);
+            }, 2000);
             return
         }
         setTimeout(() => {
             setError("")
-        }, 1500);
+        }, 2000);
         return
     }, [ message, error ]);
     return (
         <div className={ `${style.messageWrapped} ${message ? style.complete : ""} ${error ? style.error : ""}` }>
-            <p>{ message } <span>&#x2714;</span></p>
+            <p>{ message }</p>
         </div>
     )
 }

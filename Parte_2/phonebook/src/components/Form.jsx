@@ -28,11 +28,11 @@ const Form = ({ setPersons, persons, setMessage,setError }) => {
       .create(newPersonToAdd)
       .then(response => {
         setNewPerson({ name: '', number: '' });
-        setMessage("New number added")
+        setMessage("New number added ✔️")
         return phonebookServices.getAll();
       })
       .then(updateList => setPersons(updateList))
-      .catch(err=> setError(err.data))
+      .catch(err=> setError(err.error))
   };
 
   return (
