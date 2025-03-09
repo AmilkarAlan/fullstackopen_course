@@ -5,8 +5,9 @@ const fs = require('fs');
 const path = require('path');
 const routes = require("./routes");
 const morgan = require("morgan");
-
+const cors = require("cors");
 app.use(express.json());
+app.use(cors());
 morgan.token('body', (req) => JSON.stringify(req.body));
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'));
 app.use("/", routes);
