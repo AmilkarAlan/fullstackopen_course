@@ -16,7 +16,7 @@ const Message = ({ message, setMessage, error, setError }) => {
     }, [ message, error ]);
     return (
         <div className={ `${style.messageWrapped} ${message ? style.complete : ""} ${error ? style.error : ""}` }>
-            <p>{ message }</p>
+            <p>{ message || error }</p>
         </div>
     )
 }
