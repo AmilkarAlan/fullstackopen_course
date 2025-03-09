@@ -5,7 +5,7 @@ import Content from './components/Content';
 import style from "./Phonebook.module.css"
 import Message from './components/Message';
 
-const Phonebook = ({ persons, setFilterList, filterList, setPersons, message, setMessage,error, setError }) => {
+const Phonebook = ({ persons, setFilterList, filterList, setPersons, message, setMessage, error, setError }) => {
     return (
         <div className={ style.layout }>
             <div className={ style.header }>
@@ -22,7 +22,8 @@ const Phonebook = ({ persons, setFilterList, filterList, setPersons, message, se
                 <Form
                     persons={ persons }
                     setPersons={ setPersons }
-                    setMessage={ setMessage } />
+                    setMessage={ setMessage }
+                    setError={ setError } />
             </div>
             <div className={ style.contentContainer }>
                 <h2>Numbers</h2>
@@ -33,7 +34,7 @@ const Phonebook = ({ persons, setFilterList, filterList, setPersons, message, se
                     setMessage={ setMessage } />
             </div>
             <div className={ style.messageContainer }>
-                <Message message={ message } setMessage={ setMessage } error={error} setError={error} />
+                <Message message={ message } setMessage={ setMessage } error={ error } setError={ setError } />
             </div>
         </div>
     )
