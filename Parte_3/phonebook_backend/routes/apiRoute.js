@@ -71,7 +71,7 @@ api.delete("/persons/:id", (req, res) => {
             return;
         }
         const persons = JSON.parse(data);
-        const newList = persons.filter(person => person.id !== Number(id));
+        const newList = persons.filter(person => Number(person.id) !== Number(id));
         fs.writeFile(path.join(__dirname, "../db.json"), JSON.stringify(newList, null, 2), (err) => {
             if (err) {
                 res.status(500).send("Error writing to the file");
